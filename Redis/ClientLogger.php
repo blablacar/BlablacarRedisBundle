@@ -38,7 +38,7 @@ class ClientLogger extends Client
 
         $this->commands[] = array(
             'name'      => $name,
-            'arguments' => implode(', ', $arguments),
+            'arguments' => $this->flatten($arguments),
             'duration'  => $duration
         );
 
@@ -53,5 +53,32 @@ class ClientLogger extends Client
     public function getCommands()
     {
         return $this->commands;
+    }
+
+    /**
+     * flatten
+     *
+     * @param mixed $arguments
+     * @param array $list
+     *
+     * @return array
+     */
+    protected function flatten($arguments, array &$list = array())
+    {
+        foreach ($arguments as $key => $item) {
+            if (!is_numeric($key)) {
+                $list[] = $key;
+            }
+
+            if (is_scalar($item)) {
+                $list[] = strval($item);
+            } elseif (null === $item) {
+                $list[] = '<null>';
+            } else {
+                $this->flatten($item, $list);
+            }
+        }
+
+        return $list;
     }
 }
