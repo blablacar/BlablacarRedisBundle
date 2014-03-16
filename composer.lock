@@ -3,11 +3,11 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "4847d8d04ccbb1ffa6d7fb437337fa63",
+    "hash": "161aaed6bc8514c2a4f4f12731d01cb7",
     "packages": [
         {
             "name": "blablacar/redis-client",
-            "version": "dev-master",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/blablacar/redis-client.git",
@@ -527,9 +527,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "blablacar/redis-client": 20
-    },
+    "stability-flags": [
+
+    ],
     "platform": {
         "php": ">=5.3.3"
     },
