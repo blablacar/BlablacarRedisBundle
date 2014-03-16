@@ -1,0 +1,16 @@
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="blablacar_redis.session_handler.class">Blablacar\Redis\Client</parameter>
+    </parameters>
+
+    <service id="blablacar_redis.session_handler" class="%blablacar_redis.session_handler.class%">
+        <argument type="service" id="blablacar_redis.session.client" />
+        <argument>%blablacar_redis.session.prefix%</argument>
+        <argument>%blablacar_redis.session.ttl%</argument>
+        <argument>%blablacar_redis.session.spin_lock_wait%</argument>
+        <argument>%blablacar_redis.session.lock_max_wait%</argument>
+    </service>
+</container>

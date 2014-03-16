@@ -36,5 +36,17 @@ class BlablacarRedisExtension extends Extension
 
             $container->setDefinition($id, new DefinitionDecorator('blablacar_redis.client'));
         }
+
+        if (isset($config['session'])) {
+            $loader->load('session.xml');
+
+            $container->setParameter('blablacar_redis.session.prefix', $config['session']['prefix']);
+            $container->setParameter('blablacar_redis.session.ttl', $config['session']['ttl']);
+            $container->setParameter('blablacar_redis.session.spin_lock_wait', $config['session']['spin_lock_wait']);
+            $container->setParameter('blablacar_redis.session.lock_max_wait', $config['session']['lock_max_wait']);
+
+            $client = sprintf('blablacar_redis.client_%s', $config['session']['client']);
+            $container->setAlias('blablacar_redis.session.client', $client);
+        }
     }
 }

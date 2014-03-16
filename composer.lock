@@ -3,26 +3,27 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "161aaed6bc8514c2a4f4f12731d01cb7",
+    "hash": "4847d8d04ccbb1ffa6d7fb437337fa63",
     "packages": [
         {
             "name": "blablacar/redis-client",
-            "version": "v1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/blablacar/redis-client.git",
-                "reference": "8d2e4f550de6d9c36285caeff33d2cdd610794a7"
+                "reference": "646b8b6aa4af943f6cd9becf77565657ddaf5de9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/blablacar/redis-client/zipball/8d2e4f550de6d9c36285caeff33d2cdd610794a7",
-                "reference": "8d2e4f550de6d9c36285caeff33d2cdd610794a7",
+                "url": "https://api.github.com/repos/blablacar/redis-client/zipball/646b8b6aa4af943f6cd9becf77565657ddaf5de9",
+                "reference": "646b8b6aa4af943f6cd9becf77565657ddaf5de9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
+                "phpspec/prophecy": "~1.1",
                 "phpunit/phpunit": "~3.7"
             },
             "type": "library",
@@ -46,7 +47,7 @@
                 "client",
                 "redis"
             ],
-            "time": "2014-03-16 12:38:42"
+            "time": "2014-03-16 16:59:24"
         }
     ],
     "packages-dev": [
@@ -526,9 +527,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "blablacar/redis-client": 20
+    },
     "platform": {
         "php": ">=5.3.3"
     },

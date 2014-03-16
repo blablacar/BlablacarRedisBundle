@@ -32,6 +32,16 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+                ->arrayNode('session')
+                    ->canBeUnset()
+                    ->children()
+                        ->scalarNode('client')->isRequired()->end()
+                        ->scalarNode('prefix')->defaultValue('session')->cannotBeEmpty()->end()
+                        ->integerNode('ttl')->end()
+                        ->integerNode('spin_lock_wait')->defaultValue(150000)->end()
+                        ->integerNode('lock_max_wait')->defaultValue(500000)->end()
+                    ->end()
+                ->end()
             ->end()
         ;
 

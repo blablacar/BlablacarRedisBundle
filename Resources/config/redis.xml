@@ -7,6 +7,6 @@
     </parameters>
 
     <services>
-        <service id="blablacar_redis.client" class="%blablacar_redis.client.class%" public="false" />
+        <service id="blablacar_redis.client" class="%blablacar_redis.client.class%" />
     </services>
 </container>
