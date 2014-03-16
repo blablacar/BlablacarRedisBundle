@@ -31,10 +31,22 @@ class BlablacarRedisExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('redis.xml');
 
+        $enableLogger = $config['enable_logger'];
+        if ($enableLogger) {
+            $loader->load('collector.xml');
+        }
+
         foreach ($config['clients'] as $name => $config) {
             $id = sprintf('blablacar_redis.client.%s', $name);
 
-            $container->setDefinition($id, new DefinitionDecorator('blablacar_redis.client'));
+            if (!$enableLogger) {
+                $container->setDefinition($id, new DefinitionDecorator('blablacar_redis.client.base'));
+            } else {
+                $container->setDefinition($id, new DefinitionDecorator('blablacar_redis.client.logger'));
+                $container
+                    ->getDefinition('blablacar_redis.data_collector')
+                    ->addMethodCall('addClient', array($name, new Reference($id)));
+            }
         }
 
         if (isset($config['session'])) {
