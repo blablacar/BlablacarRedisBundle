@@ -15,7 +15,10 @@
     },
     "require-dev": {
         "phpunit/phpunit": "~3.7",
-        "phpspec/prophecy": "~1.1"
+        "phpspec/prophecy": "~1.1",
+        "symfony/http-kernel": "@stable",
+        "symfony/config": "@stable",
+        "symfony/dependency-injection": "@stable"
     },
     "autoload": {
         "psr-0": {
