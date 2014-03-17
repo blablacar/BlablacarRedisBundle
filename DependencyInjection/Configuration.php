@@ -41,7 +41,7 @@ class Configuration implements ConfigurationInterface
                         ->integerNode('lock_max_wait')->defaultValue(500000)->end()
                     ->end()
                 ->end()
-                ->booleanNode('enable_logger')->defaultTrue()->cannotBeEmpty()->end()
+                ->booleanNode('enable_logger')->defaultTrue()->end()
             ->end()
         ;
 
