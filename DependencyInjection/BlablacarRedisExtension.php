@@ -37,13 +37,26 @@ class BlablacarRedisExtension extends Extension
         foreach ($config['clients'] as $name => $config) {
             $id = sprintf('blablacar_redis.client.%s', $name);
 
+            $baseClientDefinition = new DefinitionDecorator('blablacar_redis.client.base');
+            $baseClientDefinition
+                ->replaceArgument(0, $config['host'])
+                ->replaceArgument(1, $config['port'])
+                ->replaceArgument(2, $config['base'])
+            ;
+
             if (!$enableLogger) {
-                $container->setDefinition($id, new DefinitionDecorator('blablacar_redis.client.base'));
+                $container->setDefinition($id, $baseClientDefinition);
             } else {
-                $container->setDefinition($id, new DefinitionDecorator('blablacar_redis.client.logger'));
+                $container->setDefinition($id.'.base', $baseClientDefinition)->setPublic(false);
+
+                $container
+                    ->setDefinition($id, new DefinitionDecorator('blablacar_redis.client.logger'))
+                    ->replaceArgument(0, new Reference($id.'.base'))
+                ;
                 $container
                     ->getDefinition('blablacar_redis.data_collector')
-                    ->addMethodCall('addClient', array($name, new Reference($id)));
+                    ->addMethodCall('addClient', array($name, new Reference($id)))
+                ;
             }
         }
 
