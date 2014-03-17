@@ -25,7 +25,7 @@ class RedisDataCollector extends DataCollector
             foreach ($client->getCommands() as $command) {
                 $this->data[] = array(
                     'command'    => $command['name'],
-                    'arguments'  => $command['arguments'],
+                    'arguments'  => implode(', ', $command['arguments']),
                     'duration'   => $command['duration'],
                     'connection' => $name
                 );
