@@ -34,14 +34,14 @@ class BlablacarRedisExtension extends Extension
             $loader->load('collector.xml');
         }
 
-        foreach ($config['clients'] as $name => $config) {
+        foreach ($config['clients'] as $name => $clientConfig) {
             $id = sprintf('blablacar_redis.client.%s', $name);
 
             $baseClientDefinition = new DefinitionDecorator('blablacar_redis.client.base');
             $baseClientDefinition
-                ->replaceArgument(0, $config['host'])
-                ->replaceArgument(1, $config['port'])
-                ->replaceArgument(2, $config['base'])
+                ->replaceArgument(0, $clientConfig['host'])
+                ->replaceArgument(1, $clientConfig['port'])
+                ->replaceArgument(2, $clientConfig['base'])
             ;
 
             if (!$enableLogger) {
@@ -68,8 +68,9 @@ class BlablacarRedisExtension extends Extension
             $container->setParameter('blablacar_redis.session.spin_lock_wait', $config['session']['spin_lock_wait']);
             $container->setParameter('blablacar_redis.session.lock_max_wait', $config['session']['lock_max_wait']);
 
-            $client = sprintf('blablacar_redis.client_%s', $config['session']['client']);
+            $client = sprintf('blablacar_redis.client.%s', $config['session']['client']);
             $container->setAlias('blablacar_redis.session.client', $client);
+            $container->setAlias('session.handler', 'blablacar_redis.session_handler');
         }
     }
 }
