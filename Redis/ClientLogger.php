@@ -56,6 +56,16 @@ class ClientLogger extends Client
     }
 
     /**
+     * reset
+     *
+     * @return void
+     */
+    public function reset()
+    {
+        $this->commands = array();
+    }
+
+    /**
      * flatten
      *
      * @param mixed $arguments

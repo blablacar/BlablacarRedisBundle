@@ -30,6 +30,8 @@ class RedisDataCollector extends DataCollector
                     'connection' => $name
                 );
             }
+
+            $client->reset();
         }
     }
 
