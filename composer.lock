@@ -7,16 +7,16 @@
     "packages": [
         {
             "name": "blablacar/redis-client",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/blablacar/redis-client.git",
-                "reference": "25e247d6a3d8a9203e849f0a8c0455b67561094e"
+                "reference": "eec36ff59afe11b8d362c5f83340dffe0cf60fd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/blablacar/redis-client/zipball/25e247d6a3d8a9203e849f0a8c0455b67561094e",
-                "reference": "25e247d6a3d8a9203e849f0a8c0455b67561094e",
+                "url": "https://api.github.com/repos/blablacar/redis-client/zipball/eec36ff59afe11b8d362c5f83340dffe0cf60fd4",
+                "reference": "eec36ff59afe11b8d362c5f83340dffe0cf60fd4",
                 "shasum": ""
             },
             "require": {
@@ -47,7 +47,7 @@
                 "client",
                 "redis"
             ],
-            "time": "2014-03-17 10:02:33"
+            "time": "2014-03-18 14:59:01"
         }
     ],
     "packages-dev": [
