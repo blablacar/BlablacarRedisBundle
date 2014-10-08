@@ -33,7 +33,7 @@ class ClientLogger extends Client
     public function __call($name, array $arguments)
     {
         $start = microtime(true);
-        $return = $this->client->__call($name, $arguments);
+        $return = $this->client->$name($arguments);
         $duration = microtime(true) - $start;
 
         $this->commands[] = array(
