@@ -43,6 +43,7 @@ class BlablacarRedisExtension extends Extension
                 ->replaceArgument(1, $clientConfig['port'])
                 ->replaceArgument(2, $clientConfig['base'])
             ;
+            $baseClientDefinition->addTag('redis.client', array('client_name' => $name));
 
             if (!$enableLogger) {
                 $container->setDefinition($id, $baseClientDefinition);
