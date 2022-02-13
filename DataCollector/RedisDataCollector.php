@@ -66,4 +66,10 @@ class RedisDataCollector extends DataCollector
 
         return $time;
     }
+
+    public function reset()
+    {
+        $this->data = [];
+        $this->clients = [];
+    }
 }
