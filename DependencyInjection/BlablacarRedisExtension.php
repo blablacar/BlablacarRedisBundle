@@ -2,18 +2,14 @@
 
 namespace Blablacar\RedisBundle\DependencyInjection;
 
+use Symfony\Component\DependencyInjection\ChildDefinition;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\DependencyInjection\DefinitionDecorator;
 
-/**
- * BlablacarRedisExtension
- */
 class BlablacarRedisExtension extends Extension
 {
     /**
@@ -37,7 +33,7 @@ class BlablacarRedisExtension extends Extension
         foreach ($config['clients'] as $name => $clientConfig) {
             $id = sprintf('blablacar_redis.client.%s', $name);
 
-            $baseClientDefinition = new DefinitionDecorator('blablacar_redis.client.base');
+            $baseClientDefinition = new ChildDefinition('blablacar_redis.client.base');
             $baseClientDefinition
                 ->replaceArgument(0, $clientConfig['host'])
                 ->replaceArgument(1, $clientConfig['port'])
@@ -54,7 +50,7 @@ class BlablacarRedisExtension extends Extension
                 $container->setDefinition($id.'.base', $baseClientDefinition)->setPublic(false);
 
                 $container
-                    ->setDefinition($id, new DefinitionDecorator('blablacar_redis.client.logger'))
+                    ->setDefinition($id, new ChildDefinition('blablacar_redis.client.logger'))
                     ->replaceArgument(0, new Reference($id.'.base'))
                 ;
                 $container

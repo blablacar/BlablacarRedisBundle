@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/blablacar/BlablacarRedisBundle.png)](https://travis-ci.org/blablacar/BlablacarRedisBundle)
 
-A bundle to use redis inside your Symfony2 application
+A bundle to use redis inside your Symfony application
 
 ## Installation
 
