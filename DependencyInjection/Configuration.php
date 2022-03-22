@@ -42,6 +42,7 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
                 ->booleanNode('enable_logger')->defaultTrue()->end()
+                ->booleanNode('public')->defaultFalse()->end()
             ->end()
         ;
 
