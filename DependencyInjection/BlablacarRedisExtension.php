@@ -45,13 +45,14 @@ class BlablacarRedisExtension extends Extension
             $baseClientDefinition->addTag('redis.client', array('client_name' => $name));
 
             if (!$enableLogger) {
-                $container->setDefinition($id, $baseClientDefinition);
+                $container->setDefinition($id, $baseClientDefinition)->setPublic($config['public']);
             } else {
                 $container->setDefinition($id.'.base', $baseClientDefinition)->setPublic(false);
 
                 $container
                     ->setDefinition($id, new ChildDefinition('blablacar_redis.client.logger'))
                     ->replaceArgument(0, new Reference($id.'.base'))
+                    ->setPublic($config['enable_logger'])
                 ;
                 $container
                     ->getDefinition('blablacar_redis.data_collector')
