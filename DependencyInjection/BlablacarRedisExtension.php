@@ -52,7 +52,7 @@ class BlablacarRedisExtension extends Extension
                 $container
                     ->setDefinition($id, new ChildDefinition('blablacar_redis.client.logger'))
                     ->replaceArgument(0, new Reference($id.'.base'))
-                    ->setPublic($config['enable_logger'])
+                    ->setPublic($config['public'])
                 ;
                 $container
                     ->getDefinition('blablacar_redis.data_collector')
