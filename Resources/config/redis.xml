@@ -11,6 +11,8 @@
         <service id="blablacar_redis.client.base" class="%blablacar_redis.client.base.class%">
             <argument></argument>
             <argument></argument>
+            <argument></argument>
+            <argument></argument>
         </service>
 
         <service id="blablacar_redis.client.logger" class="%blablacar_redis.client.logger.class%">

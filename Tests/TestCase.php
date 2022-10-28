@@ -2,16 +2,16 @@
 
 namespace Blablacar\RedisBundle\Tests;
 
-class TestCase extends \PHPUnit_Framework_TestCase
+class TestCase extends \PHPUnit\Framework\TestCase
 {
     protected $prophet;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->prophet = new \Prophecy\Prophet;
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         $this->prophet->checkPredictions();
     }

@@ -39,8 +39,12 @@ class BlablacarRedisExtension extends Extension
                 ->replaceArgument(1, $clientConfig['port'])
             ;
 
+            if (isset($clientConfig['timeout'])) {
+                $baseClientDefinition->replaceArgument(2, $clientConfig['timeout']);
+            }
+
             if (isset($clientConfig['base'])) {
-                $baseClientDefinition->replaceArgument(2, $clientConfig['base']);
+                $baseClientDefinition->replaceArgument(3, $clientConfig['base']);
             }
             $baseClientDefinition->addTag('redis.client', array('client_name' => $name));
 
