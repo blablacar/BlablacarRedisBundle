@@ -46,6 +46,11 @@ class BlablacarRedisExtension extends Extension
             if (isset($clientConfig['base'])) {
                 $baseClientDefinition->replaceArgument(3, $clientConfig['base']);
             }
+
+            if (isset($clientConfig['password'])) {
+                $baseClientDefinition->replaceArgument(4, $clientConfig['password']);
+            }
+
             $baseClientDefinition->addTag('redis.client', array('client_name' => $name));
 
             if (!$enableLogger) {

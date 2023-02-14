@@ -32,6 +32,7 @@ class Configuration implements ConfigurationInterface
                                 ->defaultValue(0.0)
                             ->end()
                             ->integerNode('base')->end()
+                            ->scalarNode('password')->defaultValue(null)->end()
                         ->end()
                     ->end()
                 ->end()

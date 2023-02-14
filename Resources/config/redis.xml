@@ -9,10 +9,11 @@
 
     <services>
         <service id="blablacar_redis.client.base" class="%blablacar_redis.client.base.class%">
-            <argument></argument>
-            <argument></argument>
-            <argument>0.0</argument>
-            <argument>null</argument>
+            <argument></argument> <!-- host -->
+            <argument></argument> <!-- port -->
+            <argument>0.0</argument> <!-- timeout -->
+            <argument>null</argument> <!-- base -->
+            <argument>null</argument> <!-- password -->
         </service>
 
         <service id="blablacar_redis.client.logger" class="%blablacar_redis.client.logger.class%">
